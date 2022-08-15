@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+out/
+target
+!**/src/**/target
+!**/test/**/target
+build/
+!**/src/**/build
+!**/test/**/build
+*.iml
+local.properties
+buildSrcTmp/
+distTmp/
+outTmp/
+kotlin-ide/
