@@ -2,32 +2,38 @@
 
 Create a gRPC JokesService with the following:
 
-1. The client can register user with username
-   1. Client sends RegisterRequest to the server with the username
-   2. Server receives username from the client and returns response the following message: _Successfully registered \<username\>_
+1. The client can create a new joke
+   1. Client sends create joke request to the server
+   2. Server receives joke from the client, adds joke to a list of jokes and returns created joke response
 
-2. Send multiple jokes
-   1. Client sends multiple jokes to server (SendJokeRequest)
-   2. Server returns an acknowledgement message after receiving all messages
+2. Create multiple jokes
+   1. Client sends multiple jokes to server
+   2. Server receives all jokes, adds them to the list of jokes and returns an acknowledgement response at the end of receiving all messages
    
-3. Send multiple messages
-   1. Client sends multiple messages to the server (SendJokeRequest)
-   2. For each message, server returns an acknowledgement message
+3. Create multiple jokes using streaming
+   1. Client sends multiple jokes to the server
+   2. For each joke received, the server adds the joke to the list of jokes and returns an acknowledgement response
 
-4. Receive new jokes every 5 seconds
-   1. Client sends a SubscribeJoke request to the server
-   2. Server sends random jokes every 5 seconds
+4. Subscribe to the jokes service and receive new jokes every X seconds
+   1. Client sends a subscribe joke request to the server with the frequency in seconds
+   2. Server starts sending random jokes every X seconds (where X is the frequency)
 
 ## Instructions
 
-1. Start by defining the Protobuf specification under src/proto directory.
-2. Run mvn clean compile to generate the Protobuf Kotlin classes
-3. Create a new Kotlin service on package server.service package which will implement the JokeServiceGrpcKt
-4. Add the new service to the *availableServices* list on *ServerMain* class.
+1. Start by defining the Protobuf specification under `src/proto` directory.
+2. Run `mvn clean compile` to generate the Protobuf Kotlin classes
+3. Create a new service on package `com.josemiguelmelo.example.grpc.server.service` 
+4. The service create should implement the CoroutineImplBase interface under JokeServiceGrpcKt
+5. Add the new service to the *availableServices* list on *ServerMain* class.
+6. Implement all methods specified on the proto spec. The method signature should be available on the interface implemented by the service.
 
-5. Implement all methods specified on the proto spec. The method signature should be available on JokeServiceGrpcKt.
+## Bonus points
 
-After finishing the implementation of the server, you can try implementing the client by following the HelloService example. 
+On the instructions, only the server is implemented.
+
+As bonus points, you can try to implement the client for the gRPC API that was created.
+
+*Note: Take HelloService as an example for the implementation of the client.* 
 
 ## Testing the gRPC application
 
