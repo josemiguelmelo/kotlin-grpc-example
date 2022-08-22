@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package com.josemiguelmelo.example.grpc.jokes;
+
+option java_multiple_files = true;
+
+service JokeService {
+  rpc addJoke (CreateJokeRequest) returns (JokeCreatedResponse) {}
+  rpc addJokes (stream CreateJokeRequest) returns (JokeStreamCreatedResponse) {}
+  rpc streamAddJokes (stream CreateJokeRequest) returns (stream JokeCreatedResponse) {}
+  rpc subscribeJokes (SubscribeJokeRequest) returns (stream JokeResponse) {}
+}
+
+message CreateJokeRequest {
+  string joke = 1;
+}
+
+message SubscribeJokeRequest {
+  int32 frequency = 1;
+}
+
+message JokeResponse {
+  string joke = 1;
+}
+
+message JokeCreatedResponse {
+  string message = 1;
+}
+
+message JokeStreamCreatedResponse {
+  string message = 1;
+  int32 total = 2;
+}
