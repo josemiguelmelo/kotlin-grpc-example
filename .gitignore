@@ -13,3 +13,6 @@ buildSrcTmp/
 distTmp/
 outTmp/
 kotlin-ide/
+*.pb
+sabledocs_output
+src/main/proto/docs

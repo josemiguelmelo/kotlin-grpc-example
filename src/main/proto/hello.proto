@@ -1,17 +1,28 @@
 syntax = "proto3";
 
+  // Hello world package
 package com.josemiguelmelo.example.grpc.helloworld;
 
 option java_multiple_files = true;
 
+/**
+ * HelloService represents a first hello world service.
+ */
 service HelloService {
+  // hello rpc call intends to make a hello world call
   rpc hello (HelloRequest) returns (HelloReply) {}
 }
 
+
+/**
+ * HelloRequest Hello world request
+ */
 message HelloRequest {
+  // The name to say hello to
   string name = 1;
 }
 
 message HelloReply {
+  // The hello message
   string message = 1;
 }

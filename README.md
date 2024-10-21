@@ -43,3 +43,19 @@ The application will start, by default, on port 15001.
 ```bash
 evans -r -p 15001
 ```
+
+## Generate gRPC documentation
+
+To generate the gRPC documentation, you can use 2 different tools:
+
+1. Using protoc-gen-doc - the documentation is generated on `src/main/proto/docs/index.html`
+
+```bash
+make protoc-gendocs
+```
+
+2. Using sabledocs - the documentation is generated on `src/main/proto/docs/sabledocs_output/index.html`
+
+```bash
+make sabledocs-gendocs
+```
